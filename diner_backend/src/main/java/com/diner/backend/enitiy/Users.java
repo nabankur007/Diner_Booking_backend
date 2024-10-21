@@ -50,4 +50,10 @@ public class Users {
     private Role role;
 
 
+    public Users(@NotBlank @Size(min = 3, max = 20) String username, @NotBlank @Size(max = 50) @Email String email, String encode, @Size(max = 10) String phoneNumber) {
+        this.userName = username;
+        this.email = email;
+        this.password = encode;
+        this.phoneNumber = phoneNumber;
+    }
 }

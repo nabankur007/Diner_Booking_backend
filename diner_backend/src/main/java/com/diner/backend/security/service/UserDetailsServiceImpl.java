@@ -1,9 +1,7 @@
-package com.diner.backend.service;
+package com.diner.backend.security.service;
 
 import com.diner.backend.enitiy.Users;
 import com.diner.backend.repository.UsersRepo;
-import com.secure.notes.models.User;
-import com.secure.notes.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

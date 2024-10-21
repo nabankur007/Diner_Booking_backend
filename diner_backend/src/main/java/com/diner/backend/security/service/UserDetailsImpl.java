@@ -1,4 +1,4 @@
-package com.diner.backend.service.serviceimpl;
+package com.diner.backend.security.service;
 
 import com.diner.backend.enitiy.Users;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 
 @NoArgsConstructor
