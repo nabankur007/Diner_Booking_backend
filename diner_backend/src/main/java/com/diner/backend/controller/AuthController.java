@@ -158,4 +158,10 @@ public class AuthController {
     public String currentUserName(@AuthenticationPrincipal UserDetails userDetails) {
         return (userDetails != null) ? userDetails.getUsername() : "";
     }
+
+    @GetMapping("/public/user/{token}")
+    public String test(@PathVariable String token) {
+        System.out.println("dadd");
+        return jwtUtils.getUserNameFromJwtToken(token);
+    }
 }
