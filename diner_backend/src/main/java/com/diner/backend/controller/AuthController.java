@@ -12,6 +12,7 @@ import com.diner.backend.security.response.LoginResponse;
 import com.diner.backend.security.response.MessageResponse;
 import com.diner.backend.security.response.UserInfoResponse;
 import com.diner.backend.service.UsersService;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +39,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials="true")
+@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -131,7 +132,7 @@ public class AuthController {
         user.setRole(role);
         userRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("User reg  istered successfully!"));
     }
 
 
@@ -140,7 +141,7 @@ public class AuthController {
         Users user = userService.findByUsername(userDetails.getUsername());
 
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
         UserInfoResponse response = new UserInfoResponse(
@@ -159,5 +160,29 @@ public class AuthController {
         return (userDetails != null) ? userDetails.getUsername() : "";
     }
 
-    
+    @PostMapping("/public/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestParam String email) {
+        try {
+            userService.generatePasswordResetToken(email);
+            return ResponseEntity.ok(new MessageResponse("Password reset email sent!"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error sending password reset email"));
+        }
+
+    }
+
+    @PostMapping("/public/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestParam String token,
+                                           @RequestParam String newPassword) {
+        System.out.println("track");
+        try {
+            userService.resetPassword(token, newPassword);
+            return ResponseEntity.ok(new MessageResponse("Password reset successful"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new MessageResponse(e.getMessage()));
+        }
+    }
 }
