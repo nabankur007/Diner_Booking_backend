@@ -1,6 +1,6 @@
 package com.diner.backend.repositories;
 
-import com.diner.backend.enitiy.PasswordResetToken;
+import com.diner.backend.entity.PasswordResetToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

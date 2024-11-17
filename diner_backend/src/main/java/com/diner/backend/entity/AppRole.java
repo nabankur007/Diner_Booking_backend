@@ -1,4 +1,4 @@
-package com.diner.backend.enitiy;
+package com.diner.backend.entity;
 
 public enum AppRole {
     ROLE_USER,

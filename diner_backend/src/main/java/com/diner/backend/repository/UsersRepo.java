@@ -1,6 +1,6 @@
 package com.diner.backend.repository;
 
-import com.diner.backend.enitiy.Users;
+import com.diner.backend.entity.Users;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

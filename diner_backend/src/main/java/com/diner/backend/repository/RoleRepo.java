@@ -1,6 +1,6 @@
 package com.diner.backend.repository;
-import com.diner.backend.enitiy.AppRole;
-import com.diner.backend.enitiy.Role;
+import com.diner.backend.entity.AppRole;
+import com.diner.backend.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

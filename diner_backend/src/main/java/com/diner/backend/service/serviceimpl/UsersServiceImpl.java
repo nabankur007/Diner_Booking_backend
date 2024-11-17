@@ -1,14 +1,14 @@
 package com.diner.backend.service.serviceimpl;
 
-import com.diner.backend.enitiy.AppRole;
-import com.diner.backend.enitiy.PasswordResetToken;
-import com.diner.backend.enitiy.Role;
-import com.diner.backend.enitiy.Users;
+import com.diner.backend.entity.AppRole;
+import com.diner.backend.entity.PasswordResetToken;
+import com.diner.backend.entity.Role;
+import com.diner.backend.entity.Users;
 import com.diner.backend.repositories.PasswordResetTokenRepository;
 import com.diner.backend.repository.RoleRepo;
 import com.diner.backend.repository.UsersRepo;
 import com.diner.backend.service.UsersService;
-import com.diner.backend.utiil.EmailService;
+import com.diner.backend.util.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -75,7 +75,7 @@ public class UsersServiceImpl implements UsersService {
         PasswordResetToken resetToken = new PasswordResetToken(token, expiryDate, user);
         passwordResetTokenRepository.save(resetToken);
 
-        String resetUrl = frontendUrl + "/reset-password?token=" + token;
+        String resetUrl = frontendUrl + "?token=" + token;
         // Send email to user
         emailService.sendPasswordResetEmail(user.getEmail(), resetUrl);
     }

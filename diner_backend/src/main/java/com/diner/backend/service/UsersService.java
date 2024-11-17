@@ -1,6 +1,6 @@
 package com.diner.backend.service;
 
-import com.diner.backend.enitiy.Users;
+import com.diner.backend.entity.Users;
 
 import java.util.List;
 

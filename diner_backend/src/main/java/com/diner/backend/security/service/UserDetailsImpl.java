@@ -1,6 +1,6 @@
 package com.diner.backend.security.service;
 
-import com.diner.backend.enitiy.Users;
+import com.diner.backend.entity.Users;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 
 @NoArgsConstructor

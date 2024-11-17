@@ -1,4 +1,4 @@
-package com.diner.backend.enitiy;
+package com.diner.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
