@@ -23,7 +23,7 @@ import java.util.UUID;
 @Service
 public class UsersServiceImpl implements UsersService {
 
-    @Value("${frontend.url}")
+    @Value("${reset_password.url}")
     String frontendUrl;
 
     @Autowired
